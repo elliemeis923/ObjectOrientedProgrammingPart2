@@ -12,6 +12,7 @@ package com.example.objectorientedprogrammingpart2;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
+import android.widget.EditText;
 import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -79,6 +80,9 @@ public class MainActivity extends AppCompatActivity {
         return quantity * price;
     }
     private void createOrderSummary(int quantity) {
+        TextView name = (TextView) findViewById(R.id.order_summary_name);
+        EditText nameEdit = (EditText) findViewById(R.id.name_edit);
+        name.setText("Name: " + nameEdit.getText());
         TextView creamView = (TextView) findViewById(R.id.order_summary_cream);
         CheckBox whippedCreamCheckBox = (CheckBox) findViewById(R.id.whipped_cream_checkbox);
         if(whippedCreamCheckBox.isChecked())
