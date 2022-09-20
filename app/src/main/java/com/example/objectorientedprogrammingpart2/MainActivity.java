@@ -22,7 +22,7 @@ import com.example.objectorientedprogrammingpart2.R;
 import org.w3c.dom.Text;
 
 import java.text.NumberFormat;
-
+/** not doing intents because udacity says it doesn't work on the emulator
 
 /**
  * This app displays an order form to order coffee.
@@ -59,12 +59,16 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void increment(View view){
-        quantity++;
-        displayQuantity(quantity);
+        if(quantity != 100) {
+            quantity++;
+            displayQuantity(quantity);
+        }
     }
     public void decrement(View view){
-        quantity--;
-        displayQuantity(quantity);
+        if(quantity != 1){
+            quantity--;
+            displayQuantity(quantity);
+        }
     }
     /**
      * Calculates the price of the order based on the current quantity.
