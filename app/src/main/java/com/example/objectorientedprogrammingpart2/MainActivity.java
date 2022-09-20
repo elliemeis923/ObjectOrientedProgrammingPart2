@@ -9,6 +9,8 @@
 package com.example.objectorientedprogrammingpart2;
 
 
+import android.content.Intent;
+import android.net.Uri;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.CheckBox;
@@ -22,7 +24,7 @@ import com.example.objectorientedprogrammingpart2.R;
 import org.w3c.dom.Text;
 
 import java.text.NumberFormat;
-/** not doing intents because udacity says it doesn't work on the emulator
+
 
 /**
  * This app displays an order form to order coffee.
@@ -103,8 +105,9 @@ public class MainActivity extends AppCompatActivity {
         TextView orderSummaryPrice = (TextView) findViewById(R.id.order_summary_price);
         orderSummaryPrice.setText("Price: $" + calculatePrice());
 
+        composeEmail();
 
-    }
+        }
     /**
      * This method displays the given quantity value on the screen.
      */
@@ -118,5 +121,13 @@ public class MainActivity extends AppCompatActivity {
     private void displayPrice(int number) {
         TextView orderSummaryPrice = (TextView) findViewById(R.id.order_summary_price);
         orderSummaryPrice.setText("Price: $" + NumberFormat.getCurrencyInstance().format(number));
+    }
+
+    public void composeEmail() {
+        Intent intent = new Intent(Intent.ACTION_SENDTO);
+        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+        if (intent.resolveActivity(getPackageManager()) != null) {
+            startActivity(intent);
+        }
     }
 }
