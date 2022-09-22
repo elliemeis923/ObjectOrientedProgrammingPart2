@@ -124,8 +124,9 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void composeEmail() {
-        Intent intent = new Intent(Intent.ACTION_SENDTO);
-        intent.setData(Uri.parse("mailto:")); // only email apps should handle this
+        Intent intent = new Intent(Intent.ACTION_SEND);
+        intent.setType("*/*");
+        intent.putExtra(Intent.EXTRA_SUBJECT, "order summary");
         if (intent.resolveActivity(getPackageManager()) != null) {
             startActivity(intent);
         }
